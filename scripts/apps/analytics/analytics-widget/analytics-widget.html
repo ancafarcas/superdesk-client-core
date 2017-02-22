@@ -1,0 +1,33 @@
+<div class="widget-container" ng-controller="AnalyticsCtrl as acc" ng-init="acc.setWidget(widget)">
+    <div class="main-list" 
+        ng-class="{wrap: acc.selected && !$root.config.features.customMonitoringWidget, 'custom-widget': $root.config.features.customMonitoringWidget}">
+        <div class="search-box">
+            <input type="text" placeholder="{{ :: 'Search' | translate }}"
+                   ng-model="query"
+                   ng-model-options="{debounce: 500}"
+                   ng-change="acc.search(query)">
+        </div>
+
+    </div>
+    <div class="preview preview-widget" ng-init="contenttab = true" 
+        ng-if="acc.selected"
+        ng-class="{wrap: !acc.selected && !$root.config.features.customMonitoringWidget, 'custom-widget': $root.config.features.customMonitoringWidget}">
+        <div class="nav">
+            <button class="backlink" href="" ng-if="!$root.config.features.customMonitoringWidget" ng-click="acc.preview()"><span class="ng-scope" translate>Back</span></button>
+        </div>
+        <ul class="nav nav-tabs">
+            <li ng-class="{active: contenttab}">
+                <button ng-click="contenttab = true" translate>Content</button>
+            </li>
+            <li ng-class="{active: !contenttab}">
+                <button ng-click="contenttab = false" translate>Metadata</button>
+            </li>
+        </ul>
+        <div class="content-item-preview" ng-if="acc.selected">
+            <div class="content" ng-if="contenttab"
+                 sd-media-preview-widget data-item="acc.selected"></div>
+            <div ng-if="!contenttab"
+                 sd-media-metadata data-item="acc.selected"></div>
+        </div>
+    </div>
+</div>

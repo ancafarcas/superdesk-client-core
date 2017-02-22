@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <a href="" class="close" ng-click="cancel()"><i class="icon-close-small"></i></a>
+    <h3 translate>Analytics settings <span ng-if="settings.desk" translate>for "{{settings.desk.name}}" Desk</span></h3>
+</div>
+
+<div class="modal-body analytics-settings" sd-wizard data-name="analyticssettings"
+     data-current-step="step.current" ng-init="setCurrentStep()" data-finish="cancel()">
+    <div sd-wizard-step data-title="{{ :: 'Desks' | translate }}" data-code="desks"
+         data-hide="shouldHideStep('desks')">
+        <div class="content">
+            <div ng-if="widget">
+                <span class="pull-right" sd-character-count data-item="widget.configuration.label" data-limit="30"></span>
+                <div class="field">
+                    <label translate>View name</label>
+                    <input type="text" class="fullwidth-input" ng-model="widget.configuration.label" ng-keyup="handleEdit($event);" required>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button id="previousBtn" class="btn btn--pull-left" ng-if="step.current !== 'desks' && !displayOnlyCurrentStep" ng-click="previous()" translate>Previous</button>
+    <button id="nextBtn" class="btn" ng-if="step.current !== 'maxitems' && !displayOnlyCurrentStep" ng-click="next()" translate>Next</button>
+    <button class="btn btn--primary" ng-click="save()" translate>Done</button>
+</div>

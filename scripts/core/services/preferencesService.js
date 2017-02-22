@@ -26,6 +26,7 @@ export default angular.module('superdesk.core.preferences', ['superdesk.core.not
                     'workqueue:items': 1,
                     'dashboard:ingest': 1,
                     'agg:view': 1,
+                    'acc: view': 1,
                     'workspace:active': 1,
                     'categories:preferred': 1,
                     'desks:preferred': 1,

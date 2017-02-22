@@ -12,6 +12,7 @@ import './styles/analytics.scss';
 
 import * as svc from './services';
 import * as directive from './directives';
+import './analytics-widget/analyticswidget';
 
 /**
  * @ngdoc module
@@ -40,3 +41,9 @@ angular.module('superdesk.apps.analytics', [])
             priority: -800
         });
     }]);
+angular.module('superdesk.apps.analyticswidget', [
+    'superdesk.apps.authoring.widgets',
+    'superdesk.apps.desks',
+    'superdesk.apps.workspace'
+])
+    .directive('sdAnalyticsSettings', directive.AnalyticsSettings);
