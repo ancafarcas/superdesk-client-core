@@ -19,9 +19,12 @@ export function DeskConfigController($scope, $controller, gettext, notify, desks
     };
 
     $scope.agg = $controller('AggregateCtrl', {$scope: $scope});
+    // $scope.acc = $controller('AnalyticsCtrl', {$scope: $scope});
     $scope.openMonitoringSettings = function(desk) {
         $scope.agg.settings.desk = desk;
         $scope.agg.edit();
+        $scope.acc.settings.desk = desk;
+        $scope.acc.edit();
     };
 
     $scope.cancel = function() {

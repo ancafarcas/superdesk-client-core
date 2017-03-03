@@ -52,5 +52,5 @@ export default angular.module('superdesk.apps', [
     'superdesk.apps.templates',
     'superdesk.apps.monitoring',
     'superdesk.apps.profiling',
-    'superdesk.apps.analytics'
+    'superdesk.apps.analytics',
 ]);

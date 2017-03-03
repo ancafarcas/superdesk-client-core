@@ -10,6 +10,7 @@
 
 import './styles/analytics.scss';
 
+import * as ctrl from './controllers';
 import * as svc from './services';
 import * as directive from './directives';
 import './analytics-widget/analyticswidget';
@@ -21,7 +22,7 @@ import './analytics-widget/analyticswidget';
  * @packageName superdesk.apps
  * @description Superdesk analytics specific application.
  */
-angular.module('superdesk.apps.analytics', [])
+angular.module('superdesk.apps.analytics', ['superdesk.apps.analyticswidget'])
     .service('savedActivityReports', svc.SavedActivityReports)
 
     .directive('sdActivityReportContainer', directive.ActivityReportContainer)
@@ -38,12 +39,14 @@ angular.module('superdesk.apps.analytics', [])
             topTemplateUrl: 'scripts/apps/dashboard/views/workspace-topnav.html',
             sideTemplateUrl: 'scripts/apps/workspace/views/workspace-sidenav.html',
             category: 'analytics',
-            priority: -800
+            priority: 800
         });
     }]);
 angular.module('superdesk.apps.analyticswidget', [
     'superdesk.apps.authoring.widgets',
+    'superdesk.apps.analytics-widget.analyticswidget',
     'superdesk.apps.desks',
     'superdesk.apps.workspace'
 ])
+    .controller('AnalyticsCtrl', ctrl.AnalyticsCtrl)
     .directive('sdAnalyticsSettings', directive.AnalyticsSettings);
